@@ -1,7 +1,9 @@
 /-
 Machine-Verified Mathematical Foundations
 
-Formal verification of theorems from the HCV/SST research programme.
+Author: Sean Eric Macaday Culm (ORCID: 0009-0009-8957-5516)
+
+Formal verification of theorems in mathematical physics.
 Files are added as the corresponding papers are published.
 
 NOTE: this must be a plain block comment `/- -/`, not a module docstring

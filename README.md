@@ -1,9 +1,9 @@
 # Machine-Verified Mathematical Foundations
 
-**Author:** Sean Macaday (ORCID: [0009-0009-8957-5516](https://orcid.org/0009-0009-8957-5516))
+**Author:** Sean Eric Macaday Culm (ORCID: [0009-0009-8957-5516](https://orcid.org/0009-0009-8957-5516))
 
-Formal verification of mathematical theorems from the HCV/SST research
-programme, using [Lean 4](https://lean-lang.org/) with
+Formal verification of mathematical theorems in mathematical physics, using
+[Lean 4](https://lean-lang.org/) with
 [Mathlib](https://github.com/leanprover-community/mathlib4).
 
 Every theorem here is kernel-verified with **zero `sorry`** — no unproved
@@ -23,10 +23,11 @@ pins the exact Lean version.
 
 ## Verified Papers
 
-Files are added as papers are published.
+Files are added as papers are published. The **Result** column names the
+principal theorem verified; full paper titles are added with each DOI.
 
-| Paper | Title | DOI | Files | Key Theorems |
-|-------|-------|-----|-------|--------------|
+| Paper | Result | DOI | Files | Key Theorems |
+|-------|--------|-----|-------|--------------|
 | **W** | The Variance Classicality Theorem | _DOI pending_ | `VCT`, `Pinching`, `SchurConcavity`, `DensityOp`, `OrthonormalBridge`, `JointDiagonalization`, `VCTCorollary`, `BlockDepolarization`, `EigenprojectorFamily` | VCT Lemma 3 (unconditional), Schur concavity (Hardy–Littlewood–Pólya), spectral expansion, joint diagonalisation, Step-2 scalarity, max-entropy uniqueness, eigenprojector resolution of identity |
 | **C** | The Statistics Inheritance Theorem | _DOI pending_ | `SIT`, `SectorDecomposition` | Statistics inheritance (Theorem 1), no c-number eigenvalues, FKS cocycle sign (k=1), bilinear parity contrast, sector decomposition (8+4+4+48=64) |
 | **F1** | ℤ₃ Branching of E₈ | _DOI pending_ | `E8Roots`, `Z3Branching`, `Z3Symmetry` | All 240 E₈ roots with norms, 112/128 split, 248 = 78+8+81+81, inner-ℤ₃ phase action giving 240 = 72+84+84 |
@@ -55,9 +56,9 @@ the infrastructure to formalise.
 ## Citation
 
 ```bibtex
-@software{macaday_lean_2026,
-  author    = {Macaday, Sean},
-  title     = {Machine-Verified Mathematical Foundations for the HCV/SST Programme},
+@software{culm_lean_2026,
+  author    = {Culm, Sean Eric Macaday},
+  title     = {Machine-Verified Mathematical Foundations},
   year      = {2026},
   publisher = {GitHub},
   url       = {https://github.com/seanculm-maker/macaday_physics_lean}

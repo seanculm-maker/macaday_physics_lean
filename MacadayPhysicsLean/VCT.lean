@@ -1,5 +1,5 @@
 /-
-VCT — Variational Coarse-graining Theorem (Paper W §2-3, the
+VCT — Variance Classicality Theorem (Paper W §2-3, the
 finite-dimensional case §5.1).
 
 **Mathematical content.**  Given commuting Hermitian constraints
