@@ -27,21 +27,11 @@ Files are added as papers are published.
 
 | Paper | Title | DOI | Files | Key Theorems |
 |-------|-------|-----|-------|--------------|
-<!-- STAGE1
-| **W** | The Variance Classicality Theorem | [DOI](https://doi.org/XXXX) | `VCT`, `Pinching`, `SchurConcavity`, `DensityOp`, `OrthonormalBridge`, `JointDiagonalization`, `VCTCorollary`, `BlockDepolarization`, `EigenprojectorFamily` | VCT Lemma 3 (unconditional), Schur concavity (Hardy–Littlewood–Pólya), spectral expansion, joint diagonalisation, Step-2 scalarity, max-entropy uniqueness, eigenprojector resolution of identity |
-STAGE1 -->
-<!-- STAGE2
-| **C** | The Statistics Inheritance Theorem | [DOI](https://doi.org/XXXX) | `SIT`, `SectorDecomposition` | Statistics inheritance (Theorem 1), no c-number eigenvalues, FKS cocycle sign (k=1), bilinear parity contrast, sector decomposition (8+4+4+48=64) |
-STAGE2 -->
-<!-- STAGE3
-| **F1** | ℤ₃ Branching of E₈ | [DOI](https://doi.org/XXXX) | `E8Roots`, `Z3Branching`, `Z3Symmetry` | All 240 E₈ roots with norms, 112/128 split, 248 = 78+8+81+81, inner-ℤ₃ phase action giving 240 = 72+84+84 |
-STAGE3 -->
-<!-- STAGE4
-| **M** | Moncrief Reduction and Holonomy Rigidity | [DOI](https://doi.org/XXXX) | `HolonomyRigidity` | cosh β > 1 for β ≠ 0, with equality iff β = 0 |
-STAGE4 -->
-<!-- STAGE5
-| **T** | The Genus Tower | [DOI](https://doi.org/XXXX) | `GenusTower` | Genus tower formula (g=0: 0, g=1: 1, g≥2: 3g−3), conditional on Riemann–Roch |
-STAGE5 -->
+| **W** | The Variance Classicality Theorem | _DOI pending_ | `VCT`, `Pinching`, `SchurConcavity`, `DensityOp`, `OrthonormalBridge`, `JointDiagonalization`, `VCTCorollary`, `BlockDepolarization`, `EigenprojectorFamily` | VCT Lemma 3 (unconditional), Schur concavity (Hardy–Littlewood–Pólya), spectral expansion, joint diagonalisation, Step-2 scalarity, max-entropy uniqueness, eigenprojector resolution of identity |
+| **C** | The Statistics Inheritance Theorem | _DOI pending_ | `SIT`, `SectorDecomposition` | Statistics inheritance (Theorem 1), no c-number eigenvalues, FKS cocycle sign (k=1), bilinear parity contrast, sector decomposition (8+4+4+48=64) |
+| **F1** | ℤ₃ Branching of E₈ | _DOI pending_ | `E8Roots`, `Z3Branching`, `Z3Symmetry` | All 240 E₈ roots with norms, 112/128 split, 248 = 78+8+81+81, inner-ℤ₃ phase action giving 240 = 72+84+84 |
+| **M** | Moncrief Reduction and Holonomy Rigidity | _DOI pending_ | `HolonomyRigidity` | cosh β > 1 for β ≠ 0, with equality iff β = 0 |
+| **T** | The Genus Tower | _DOI pending_ | `GenusTower` | Genus tower formula (g=0: 0, g=1: 1, g≥2: 3g−3), conditional on Riemann–Roch |
 
 ## What "zero sorry" means
 
