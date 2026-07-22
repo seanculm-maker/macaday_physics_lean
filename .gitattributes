@@ -1,0 +1,4 @@
+# Normalise everything to LF in the repository and in the working tree.
+# Lean sources, lean-toolchain and the staging scripts' `sed` line anchors
+# all assume LF; a CRLF checkout on Windows breaks them.
+* text=auto eol=lf

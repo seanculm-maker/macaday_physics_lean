@@ -1,0 +1,14 @@
+/.lake/
+/build/
+*.olean
+*.ilean
+*.trace
+.DS_Store
+/scripts/
+
+# Theorem files are ignored by default and force-added per paper.
+# This makes an accidental `git add .` or `git add -A` incapable of
+# staging an unpublished paper's file. Once a file has been force-added
+# it becomes tracked, and .gitignore no longer affects it — so subsequent
+# edits and commits to published files behave completely normally.
+MacadayPhysicsLean/*.lean
