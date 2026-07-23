@@ -1,6 +1,6 @@
 /-
 Stokes' theorem on a closed manifold: the integral of an exact form
-vanishes (Paper T).
+vanishes (Paper T3).
 
 **Mathematical statement.**  On a compact oriented manifold without
 boundary, for every exact form `dα`, `∫_M dα = 0`.
@@ -16,7 +16,7 @@ the only mathematical content is the chaining
 `∫_M (dα) = ∫_{∂M} α = ∫_0 α = 0` — and prove it as a clean lemma
 parameterized on `(∫, d, ∂)`.
 
-The physics consequence (Paper T, holographic-screen extrinsic
+The physics consequence (Paper T3, holographic-screen extrinsic
 curvature `K_⊥ = dφ` is exact, so `∫_S K_⊥ dA = 0`) follows as a
 one-line instantiation of `integral_exact_form_eq_zero_of_closed`
 to the singular cochain-level Stokes operator in any differential-
