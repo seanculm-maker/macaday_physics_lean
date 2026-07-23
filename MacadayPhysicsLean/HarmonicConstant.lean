@@ -1,6 +1,6 @@
 /-
 Harmonic functions on a compact manifold without boundary are
-constant (Paper T3 / SST campaign §1.3).
+constant (Paper T).
 
 **Mathematical statement.**  On a compact Riemannian manifold
 without boundary, if `Δf = 0` (f is harmonic), then `f` is constant.
@@ -18,7 +18,7 @@ integrates to zero ⇒ gradient is zero" implication, harmonicity
 forces zero gradient.  The final step (zero gradient ⇒ constant on
 a connected manifold) is taken as a hypothesis.
 
-The physics consequence (Paper T3, the boundary extrinsic curvature
+The physics consequence (Paper T, the boundary extrinsic curvature
 satisfies a Codazzi equation forcing it to be harmonic, hence
 constant, hence zero by the Stokes argument) follows as a one-line
 instantiation.

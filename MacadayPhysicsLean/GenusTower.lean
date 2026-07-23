@@ -1,6 +1,6 @@
 /-
 Genus Tower — `dim H⁰(Σ_g, K²) = max(0, 3g − 3)` for compact
-Riemann surfaces (SST campaign §2.1, Paper T).
+Riemann surfaces (Paper T).
 
 **Mathematical statement.**  Let `Σ_g` be a compact Riemann surface
 of genus `g`.  The complex dimension of the space of holomorphic
@@ -32,7 +32,7 @@ We state the *algebraic-arithmetic core* — given Euler characteristic
 genus-tower formula by `cases g`.
 
 The physics consequence (Paper T's genus tower:
-g = 0 ⇔ no-hair, g = 1 ⇔ HCV-Gaussian, g ≥ 2 ⇔ non-Gaussian
+g = 0 ⇔ no-hair, g = 1 ⇔ Gaussian, g ≥ 2 ⇔ non-Gaussian
 wormholes with `6g − 6` real parameters) follows directly from
 this dimension formula.
 -/
@@ -81,7 +81,7 @@ theorem dim_g0
     (h0 : ℕ → ℕ) (h0_zero : h0 0 = 0) : h0 0 = 0 := h0_zero
 
 /-- **`g = 1`: a 1-dimensional space (canonical bundle trivial).**
-The HCV-Gaussian instance (2 real parameters).  The complex-dimension
+The Gaussian instance (2 real parameters).  The complex-dimension
 1 corresponds to 2 real parameters via `ℝ = 2 · ℂ`. -/
 theorem dim_g1
     (h0 : ℕ → ℕ) (h0_one : h0 1 = 1) : h0 1 = 1 := h0_one
