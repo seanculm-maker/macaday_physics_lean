@@ -13,21 +13,26 @@ What we verify:
 * **`sigma_root` is well-defined and `sigma_root³ = id`**.
 * **`sigma_root` preserves `rootSet`** (sends roots to roots
   bijectively).
-* **Exactly 72 roots are σ-fixed** — matching the F1 prediction
-  `num_roots_fixed = 72` (defined in `Z3Branching.lean`).
+* **Exactly 72 roots are σ-fixed** — matching the Class B (su(9))
+  count `num_roots_fixed = 72` (defined in `Z3Branching.lean`).
+* **The Class B inner-ℤ₃ grading** by the Cartan vector
+  `H = (1,1,1,1,1,0,0,0)`: root split `240 = 72 + 84 + 84`,
+  fixed sector `8 + 72 = 80 = dim su(9)`.
+* **The Class A inner-ℤ₃ grading** by the mark-3 coweight
+  `H′ = (0,0,0,0,0,1,1,2)`: root split `240 = 78 + 81 + 81`,
+  fixed sector `8 + 78 = 86 = dim(E₆ ⊕ A₂)`.
 
-Caveat: this σ is *not* identical to the F1 σ.  The full F1 ℤ₃
-decomposition `240 = 72 + 84 + 84` refers to eigenspaces of an
-*inner automorphism* of `E₈` (the conjugation by
-`exp(2πi/3 · H)` for an A₂ Cartan element `H`), which acts as
-*phases* on root spaces rather than as a permutation.  Under our
+Caveat: the permutation σ is *not* an inner-automorphism grading.
+The inner-ℤ₃ decompositions refer to eigenspaces of conjugation by
+`exp(2πi/3 · H)` for a Cartan element `H`, which acts as *phases*
+on root spaces rather than as a permutation.  Under our
 *permutation* σ, the 168 non-fixed roots split into 56 size-3 orbits,
 contributing `56` to each of the ω- and ω̄-eigenspaces of σ on
 `ℂ²⁴⁰` (plus another 56 to the 1-eigenspace from orbit-symmetric
 combinations).  This gives 128 + 56 + 56 = 240, not 72 + 84 + 84.
 
-The fixed-root count `72` does match F1 exactly, however — a
-non-trivial structural coincidence.
+The fixed-root count `72` does match the Class B grading exactly,
+however — a non-trivial structural coincidence.
 -/
 
 import MacadayPhysicsLean.E8Roots
@@ -115,29 +120,32 @@ theorem fixedRoots_card_eq_F1 :
     fixedRoots.card = MacadayPhysicsLean.Z3Branching.num_roots_fixed := by
   rw [fixedRoots_card]; rfl
 
-/-! ### The TRUE inner-ℤ₃ phase action (Paper F1)
+/-! ### The Class B (su(9)) inner-ℤ₃ phase action (Paper F1)
 
-The F1 inner ℤ₃ is `Ad(exp(2πi/3 · H))` for an A₂ Cartan element
+An inner ℤ₃ is `Ad(exp(2πi/3 · H))` for a Cartan element
 `H ∈ E₈`.  Acting on a root `α`, it multiplies the root space by the
 phase `ω^{α · H}` (where `ω = exp(2πi/3)`).  The three eigenspaces
 correspond to `α · H mod 3 ∈ {0, 1, 2}`.
 
-**Key discovery.**  Taking `H = (1, 1, 1, 1, 1, 0, 0, 0)` (in our
-2×-scaled coordinates, this is `α · H = sum of first 5 coords`), the
-240 E₈ roots split as
+Taking `H = (1, 1, 1, 1, 1, 0, 0, 0)` — pairing computed on our
+2×-scaled integer roots `v = 2α`, so the phase is `(v · H) mod 3 =
+(2α · H) mod 3`, well-defined on both the integer and half-integer
+root families — the 240 E₈ roots split as
 
   `240 = 72 + 84 + 84`
 
-matching F1 exactly:
+matching the Class B constants of `Z3Branching.lean`:
 
-* `α · H ≡ 0 mod 3`: **72 roots** (the F1 `78 − 6` adjoint-minus-rank).
-* `α · H ≡ 1 mod 3`: **84 roots** (one of the ω, ω̄ eigenspaces).
-* `α · H ≡ 2 mod 3`: **84 roots** (the other).
+* `v · H ≡ 0 mod 3`: **72 roots** (fixed sector: 8 Cartan + 72
+  roots = 80 = dim su(9); this grading realizes the su(9) class,
+  `248 = 80 ⊕ 84 ⊕ 84̄`).
+* `v · H ≡ 1 mod 3`: **84 roots** (one of the ω, ω̄ eigenspaces).
+* `v · H ≡ 2 mod 3`: **84 roots** (the other).
 
-This is the genuine inner-ℤ₃ phase decomposition — *not* a coordinate
+This is a genuine inner-ℤ₃ phase decomposition — *not* a coordinate
 permutation, but a *grading* of the root system into three "phases". -/
 
-/-- The F1 Cartan vector `H = (1, 1, 1, 1, 1, 0, 0, 0)`. -/
+/-- The Class B (su(9)) Cartan vector `H = (1, 1, 1, 1, 1, 0, 0, 0)`. -/
 def F1_Cartan : Fin 8 → ℤ
   | ⟨0, _⟩ => 1
   | ⟨1, _⟩ => 1
@@ -209,5 +217,98 @@ theorem F1_omega_card_eq_F1 :
 theorem F1_omega_bar_card_eq_F1 :
     F1_omega_bar.card = MacadayPhysicsLean.Z3Branching.num_roots_omegaBar := by
   rw [F1_omega_bar_card]; rfl
+
+/-! ### The Class A (E₆ ⊕ A₂) inner-ℤ₃ phase action
+
+The second order-3 class of E₈ is graded by the coweight `ω∨` of a
+mark-3 node of the affine Dynkin diagram: in standard coordinates
+`ω∨ = (0, 0, 0, 0, 0, 1, 1, 2)`, which pairs **integrally** with
+every root (`α · ω∨ = n(α) ∈ ℤ`, the mark-3 simple-root coefficient
+of `α`).  On our 2×-scaled integer roots `v = 2α` we use the doubled
+vector `H′ = 2ω∨ = (0, 0, 0, 0, 0, 2, 2, 4)`, so that
+`v · H′ = 4 (α · ω∨) ≡ α · ω∨ (mod 3)` — the grading below is
+literally `n(α) mod 3`.
+
+Result (machine-verified below): the 240 roots split as
+
+  `240 = 78 + 81 + 81`
+
+with fixed sector `8 + 78 = 86 = dim(E₆ ⊕ A₂)`: this grading
+realizes the Borel–de Siebenthal class
+`248 = (78,1) ⊕ (1,8) ⊕ (27,3) ⊕ (27̄,3̄)`. -/
+
+/-- The Class A grading vector `H′ = (0, 0, 0, 0, 0, 2, 2, 4)`
+(twice the mark-3 coweight, matching the 2×-scaled root storage). -/
+def E6A2_Cartan : Fin 8 → ℤ
+  | ⟨0, _⟩ => 0
+  | ⟨1, _⟩ => 0
+  | ⟨2, _⟩ => 0
+  | ⟨3, _⟩ => 0
+  | ⟨4, _⟩ => 0
+  | ⟨5, _⟩ => 2
+  | ⟨6, _⟩ => 2
+  | ⟨7, _⟩ => 4
+
+/-- The ℤ₃ phase of a root under the Class A inner-ℤ₃:
+`(v · H′) mod 3 = n(α) mod 3`. -/
+def E6A2_phase (v : Fin 8 → ℤ) : ℤ :=
+  (∑ i, v i * E6A2_Cartan i) % 3
+
+/-- The Class A 1-eigenspace (fixed roots): `n(α) ≡ 0 mod 3`. -/
+def E6A2_fixed : Finset (Fin 8 → ℤ) :=
+  rootSet.filter (fun v => E6A2_phase v = 0)
+
+/-- The Class A ω-eigenspace. -/
+def E6A2_omega : Finset (Fin 8 → ℤ) :=
+  rootSet.filter (fun v => E6A2_phase v = 1)
+
+/-- The Class A ω̄-eigenspace. -/
+def E6A2_omega_bar : Finset (Fin 8 → ℤ) :=
+  rootSet.filter (fun v => E6A2_phase v = 2)
+
+/-- **Class A inner-ℤ₃: 78 roots fixed** (72 E₆ roots + 6 A₂ roots). -/
+theorem E6A2_fixed_card : E6A2_fixed.card = 78 := by
+  unfold E6A2_fixed E6A2_phase E6A2_Cartan
+  native_decide
+
+/-- **Class A inner-ℤ₃: 81 roots in the ω-eigenspace** (the root
+spaces of `(27, 3)`). -/
+theorem E6A2_omega_card : E6A2_omega.card = 81 := by
+  unfold E6A2_omega E6A2_phase E6A2_Cartan
+  native_decide
+
+/-- **Class A inner-ℤ₃: 81 roots in the ω̄-eigenspace** (the root
+spaces of `(27̄, 3̄)`). -/
+theorem E6A2_omega_bar_card : E6A2_omega_bar.card = 81 := by
+  unfold E6A2_omega_bar E6A2_phase E6A2_Cartan
+  native_decide
+
+/-- The three Class A eigenspace cardinalities sum to 240. -/
+theorem E6A2_splitting_sum :
+    E6A2_fixed.card + E6A2_omega.card + E6A2_omega_bar.card = 240 := by
+  rw [E6A2_fixed_card, E6A2_omega_card, E6A2_omega_bar_card]
+
+/-- **The Class A splitting matches the `Z3Branching` Class A
+constants `240 = 78 + 81 + 81`.** -/
+theorem E6A2_splitting_eq_branching :
+    E6A2_fixed.card + E6A2_omega.card + E6A2_omega_bar.card
+      = MacadayPhysicsLean.Z3Branching.num_roots_fixed_E6A2
+        + MacadayPhysicsLean.Z3Branching.num_roots_omega_E6A2
+        + MacadayPhysicsLean.Z3Branching.num_roots_omegaBar_E6A2 := by
+  rw [E6A2_fixed_card, E6A2_omega_card, E6A2_omega_bar_card]
+  rfl
+
+/-- Each Class A eigenspace cardinality matches the branching data. -/
+theorem E6A2_fixed_card_eq_branching :
+    E6A2_fixed.card = MacadayPhysicsLean.Z3Branching.num_roots_fixed_E6A2 := by
+  rw [E6A2_fixed_card]; rfl
+
+theorem E6A2_omega_card_eq_branching :
+    E6A2_omega.card = MacadayPhysicsLean.Z3Branching.num_roots_omega_E6A2 := by
+  rw [E6A2_omega_card]; rfl
+
+theorem E6A2_omega_bar_card_eq_branching :
+    E6A2_omega_bar.card = MacadayPhysicsLean.Z3Branching.num_roots_omegaBar_E6A2 := by
+  rw [E6A2_omega_bar_card]; rfl
 
 end MacadayPhysicsLean.Z3Symmetry
