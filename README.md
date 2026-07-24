@@ -32,7 +32,7 @@ principal theorem verified; full paper titles are added with each DOI.
 | **C** | The Statistics Inheritance Theorem | _DOI pending_ | `SIT`, `SectorDecomposition` | Statistics inheritance (Theorem 1), no c-number eigenvalues, FKS cocycle sign (k=1), bilinear parity contrast, sector decomposition (8+4+4+48=64) |
 | **F1** | ℤ₃ Branching of E₈ | _DOI pending_ | `E8Roots`, `Z3Branching`, `Z3Symmetry` | All 240 E₈ roots with norms, 112/128 split, 248 = 78+8+81+81, inner-ℤ₃ phase action giving 240 = 72+84+84 |
 | **M** | Moncrief Reduction and Holonomy Rigidity | _DOI pending_ | `HolonomyRigidity` | cosh β > 1 for β ≠ 0, with equality iff β = 0 |
-| **T** | The Genus Tower | _DOI pending_ | `GenusTower`, `StokesExactForm`, `HarmonicConstant` | Genus tower formula (g=0: 0, g=1: 1, g≥2: 3g−3), conditional on Riemann–Roch; integral of an exact form vanishes on a closed manifold; harmonic ⇒ constant on a compact manifold without boundary |
+| **T** | The Genus Tower | _DOI pending_ | `GenusTower`, `StokesExactForm`, `HarmonicConstant`, `T2HolomorphicConstant` | Genus tower formula (g=0: 0, g=1: 1, g≥2: 3g−3), conditional on Riemann–Roch (g≥2); the g=1 entry is **unconditional** — a holomorphic doubly-periodic function on ℂ is constant (Liouville), so dim H⁰(T², K²) = 1; integral of an exact form vanishes on a closed manifold; harmonic ⇒ constant on a compact manifold without boundary |
 
 ## What "zero sorry" means
 

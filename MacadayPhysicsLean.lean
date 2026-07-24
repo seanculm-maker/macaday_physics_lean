@@ -28,3 +28,4 @@ import MacadayPhysicsLean.HolonomyRigidity
 import MacadayPhysicsLean.GenusTower
 import MacadayPhysicsLean.StokesExactForm
 import MacadayPhysicsLean.HarmonicConstant
+import MacadayPhysicsLean.T2HolomorphicConstant
