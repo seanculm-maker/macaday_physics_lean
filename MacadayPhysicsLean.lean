@@ -29,3 +29,14 @@ import MacadayPhysicsLean.GenusTower
 import MacadayPhysicsLean.StokesExactForm
 import MacadayPhysicsLean.HarmonicConstant
 import MacadayPhysicsLean.T2HolomorphicConstant
+import MacadayPhysicsLean.RelativeEntropy
+import MacadayPhysicsLean.CfcEigenvector
+import MacadayPhysicsLean.RelEntropyPinching
+import MacadayPhysicsLean.RelEntropyKlein
+import MacadayPhysicsLean.RelEntropyKleinEq
+import MacadayPhysicsLean.ChainRule
+import MacadayPhysicsLean.BlockChainRule
+import MacadayPhysicsLean.ThreeDefect
+import MacadayPhysicsLean.RelEntropySupport
+import MacadayPhysicsLean.MinimizerR
+import MacadayPhysicsLean.NeutralBridge
