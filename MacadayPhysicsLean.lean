@@ -45,3 +45,6 @@ import MacadayPhysicsLean.CDTVariance
 import MacadayPhysicsLean.E8Moments
 import MacadayPhysicsLean.ThetaMaximization
 import MacadayPhysicsLean.D8Moments
+import MacadayPhysicsLean.NarainDecomposition
+import MacadayPhysicsLean.NarainEven
+import MacadayPhysicsLean.NarainSelfDual
