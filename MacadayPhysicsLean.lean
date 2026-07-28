@@ -25,6 +25,7 @@ import MacadayPhysicsLean.E8Roots
 import MacadayPhysicsLean.Z3Branching
 import MacadayPhysicsLean.Z3Symmetry
 import MacadayPhysicsLean.HolonomyRigidity
+import MacadayPhysicsLean.MoncriefA2
 import MacadayPhysicsLean.GenusTower
 import MacadayPhysicsLean.StokesExactForm
 import MacadayPhysicsLean.HarmonicConstant
