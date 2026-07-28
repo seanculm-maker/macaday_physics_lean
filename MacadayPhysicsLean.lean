@@ -40,3 +40,7 @@ import MacadayPhysicsLean.ThreeDefect
 import MacadayPhysicsLean.RelEntropySupport
 import MacadayPhysicsLean.MinimizerR
 import MacadayPhysicsLean.NeutralBridge
+import MacadayPhysicsLean.CDTVariance
+import MacadayPhysicsLean.E8Moments
+import MacadayPhysicsLean.ThetaMaximization
+import MacadayPhysicsLean.D8Moments
