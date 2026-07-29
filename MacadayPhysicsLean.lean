@@ -1,7 +1,7 @@
 /-
 Machine-Verified Mathematical Foundations
 
-Author: Sean Eric Macaday Culm (ORCID: 0009-0009-8957-5516)
+Author: Sean Eric Culm Macaday (ORCID: 0009-0009-8957-5516)
 
 Formal verification of theorems in mathematical physics.
 Files are added as the corresponding papers are published.
@@ -42,6 +42,7 @@ import MacadayPhysicsLean.RelEntropySupport
 import MacadayPhysicsLean.MinimizerR
 import MacadayPhysicsLean.NeutralBridge
 import MacadayPhysicsLean.CDTVariance
+import MacadayPhysicsLean.CDTGluing
 import MacadayPhysicsLean.E8Moments
 import MacadayPhysicsLean.ThetaMaximization
 import MacadayPhysicsLean.D8Moments

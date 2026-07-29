@@ -1,21 +1,30 @@
 /-
-CDT Variance Identity — Paper V verification.
+CDT Variance — Paper V (Theorem A): encoding layer and closing algebra.
 
-**Theorem.**  For any integer `l ≥ 2`, the mean variance of the
-"coordination number" over all `C(2l, l)` binary strip words of
-length `2l` with `l` U's and `l` D's equals exactly `2(l−1)/(l+1)`.
+This file machine-verifies, with no proof placeholders, the finitary backbone
+of Paper V's Theorem A — the parts that are pure combinatorics and rational
+algebra (matching the paper's §S7). It does **not** claim the full
+mean-variance theorem; it verifies the encoding layer and closing algebra:
 
-The proof has three independent pieces:
+1. **Constant fold** (Part 1): processing each letter of a strip word adds
+   exactly `3` to the coordination total, so the total is `3 · (length)`
+   regardless of the word, and the mean coordination is `3`.
+2. **Encoding bijection** (Part 2): `wordToComp` / `compToWord` are mutually
+   inverse on *all* of `List Bool` ↔ nonempty `List ℕ`
+   (`wordToComp_compToWord` and `compToWord_wordToComp`) — the word ↔
+   composition correspondence of Step 2 — together with the count-accounting
+   `wordToComp_length` (`= count true + 1`) and `wordToComp_sum`
+   (`= count false`), which pin the U/D multiplicities and restrict the
+   bijection to words with `l` U's and `l` D's ↔ compositions of `l` into
+   `l+1` parts.
+3. **Closing algebra** (Part 3): the rational identities
+   `(11l+7)/(l+1) − 9 = 2(l−1)/(l+1)` and its intermediate form.
 
-1. **Constant mean** (this file): processing each letter of a strip
-   word contributes exactly `3` to the total coordination count, so
-   the total is `3 · 2l = 6l` regardless of the word.  Mean = `3`.
-2. **Composition bijection**: binary words ↔ compositions of `l`
-   into `l+1` non-negative parts.
-3. **Algebraic identity**: `(11l + 7)/(l+1) − 9 = 2(l−1)/(l+1)`.
-
-Combined: variance reduces to a beta-binomial moment computation
-over compositions, which collapses by the algebraic identity.
+**Not formalized here** (carried in the paper's prose): the enumeration that
+there are exactly `C(2l, l)` such words, the beta-binomial moment computation
+over compositions, and the end-to-end assembly into the closed variance value
+`2(l−1)/(l+1)`. An earlier version of this header overstated the file as
+proving the full mean-variance theorem.
 -/
 
 import Mathlib.Tactic
@@ -181,6 +190,61 @@ theorem compToWord_wordToComp (w : List Bool) : compToWord (wordToComp w) = w :=
         have hcomp : wordToComp (false :: rest) = (d + 1) :: ds := by
           simp only [wordToComp, h]
         rw [hcomp, compToWord_cons_succ, ← h, ih]
+
+/-! ### Part 2b — Count preservation (restricts the bijection to `l` U's / `l` D's)
+
+`wordToComp` sends a word with `k` `true`s and `m` `false`s to a composition of
+`m` into `k + 1` parts.  These two lemmas make that precise, so the bijection
+of Part 2 restricts to `{words with l trues and l falses} ↔ {compositions of l
+into l+1 parts}` — the correspondence Paper V's counting argument needs. -/
+
+/-- **Length accounting**: the composition `wordToComp w` has `w.count true + 1`
+parts (one trailing run plus one run after each `true`). -/
+theorem wordToComp_length (w : List Bool) :
+    (wordToComp w).length = w.count true + 1 := by
+  induction w with
+  | nil => simp [wordToComp]
+  | cons x rest ih =>
+    cases x with
+    | true =>
+      have hc : (true :: rest).count true = rest.count true + 1 := by
+        simp
+      simp only [wordToComp, List.length_cons]
+      omega
+    | false =>
+      have hc : (false :: rest).count true = rest.count true := by
+        simp
+      cases h : wordToComp rest with
+      | nil => exact absurd h (wordToComp_ne_nil rest)
+      | cons d ds =>
+        rw [h] at ih
+        simp only [List.length_cons] at ih
+        simp only [wordToComp, h, List.length_cons]
+        omega
+
+/-- **Sum accounting**: the parts of `wordToComp w` sum to `w.count false`
+(each `false` contributes `1` to exactly one run length). -/
+theorem wordToComp_sum (w : List Bool) :
+    (wordToComp w).sum = w.count false := by
+  induction w with
+  | nil => simp [wordToComp]
+  | cons x rest ih =>
+    cases x with
+    | true =>
+      have hc : (true :: rest).count false = rest.count false := by
+        simp
+      simp only [wordToComp, List.sum_cons]
+      omega
+    | false =>
+      have hc : (false :: rest).count false = rest.count false + 1 := by
+        simp
+      cases h : wordToComp rest with
+      | nil => exact absurd h (wordToComp_ne_nil rest)
+      | cons d ds =>
+        rw [h] at ih
+        simp only [List.sum_cons] at ih
+        simp only [wordToComp, h, List.sum_cons]
+        omega
 
 /-! ### Part 3 — The algebraic identity -/
 
