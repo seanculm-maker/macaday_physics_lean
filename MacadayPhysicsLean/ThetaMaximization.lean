@@ -1,25 +1,23 @@
 /-
-E₈ × E₈ Theta Maximization at B = 0 — Paper P2 §4.
+Narain Boltzmann-weight monotonicity in a norm-sum model — Paper Z.
 
-**Statement.**  Among all even self-dual `(8, 8)` Narain lattices,
-`E₈ × E₈` at `B = 0` maximizes the theta function `Θ_Λ`.
+**What this file proves.**  An elementary Boltzmann-weight monotonicity in a
+CHIRALITY-MIXING NORM-SUM MODEL.  Writing the total norm-squared of a root
+vector as `2 + 2σ` with `σ ≥ 0` the chirality-mixing excess, the Boltzmann
+weight `exp(−π τ₂ (2 + 2σ))` is maximised at `σ = 0` and strictly decreases
+for `σ > 0`; summed over a finite root set, the theta contribution is
+maximised at `σ = 0`.  The norm-sum model comes from writing
+`|p_L|² + |p_R|² = |α|² + 2|B w|²` with `p_L = α + B w`, `p_R = B w`.
 
-**Mathematical core (Sub-approach B2 from spec).**  At `B = 0`, a
-root vector `α` with `|α|² = 2` is purely left-moving (`p_L = α`,
-`p_R = 0`).  At `B ≠ 0`, the `B`-field mixes chiralities:
-
-  `p_L = α + B w`,   `p_R = B w`,
-
-and the total norm-squared
-
-  `|p_L|² + |p_R|² = |α|² + 2|B w|² = 2 + 2|B w|² ≥ 2`,
-
-with equality iff `B w = 0`.  Hence the Boltzmann weight
-`exp(−π τ₂ (|p_L|² + |p_R|²))` *decreases* at `B ≠ 0`.  Summing
-over all root vectors, the theta function decreases.
-
-**Lean scope.**  We prove the algebraic Boltzmann-weight inequality
-plus the equality condition, then sum over a finite root set.
+**What this file does NOT prove.**  The norm-sum model above OMITS the linear
+cross term of the actual Narain quadratic form `(w + B n)ᵀ G⁻¹ (w + B n)`; the
+file does not formalize the `B`-dependence of that true quadratic form.  In
+particular the genuine global statement — `Θ(y; G, B) ≤ Θ(y; G, 0)` for all
+`B`, with equality iff `B` is integral — is proved in Paper Z by Poisson
+summation and is NOT formalized here (this is why a naive pair ratio such as
+`e^(−π y c) · cosh(π y d) > 1` does not contradict anything below).  The finite
+inequality step of that Poisson argument is captured by `sum_mul_cos_le_sum`
+below; the Poisson summation identity itself is out of scope.
 
 **Context — CKRV.**  The published Cohn-Kumar-Miller-Radchenko-Viazovska
 2022 theorem (Annals of Math 196, 983-1082) establishes E₈ as
@@ -29,6 +27,7 @@ external context only.
 -/
 
 import Mathlib.Analysis.SpecialFunctions.Exp
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
 import Mathlib.Tactic
 
 namespace MacadayPhysicsLean.ThetaMaximization
@@ -84,6 +83,45 @@ theorem theta_contribution_decreases
   apply Finset.sum_le_sum
   intro i _
   exact boltzmann_weight_decreases_with_B 2 (Bw_sq i) τ₂ rfl (hB i) hτ
+
+/-! ### The finite inequality step of the paper's Poisson argument
+
+Paper Z's genuine `B`-maximum (§9.5) is proved by Poisson summation; the single
+inequality step of that argument is the elementary cosine bound below.  The
+Poisson summation identity itself is not formalized (out of scope). -/
+
+/-- **Cosine-weighted sum bound.**  For nonnegative weights `a i` and arbitrary
+phases `θ i`, `∑ a i · cos (θ i) ≤ ∑ a i`, since `cos ≤ 1`.  This is the
+inequality step of the Poisson-summation form of the theta bound. -/
+theorem sum_mul_cos_le_sum
+    {ι : Type*} (s : Finset ι) (a θ : ι → ℝ) (ha : ∀ i ∈ s, 0 ≤ a i) :
+    s.sum (fun i => a i * Real.cos (θ i)) ≤ s.sum a := by
+  apply Finset.sum_le_sum
+  intro i hi
+  calc a i * Real.cos (θ i)
+      ≤ a i * 1 := mul_le_mul_of_nonneg_left (Real.cos_le_one (θ i)) (ha i hi)
+    _ = a i := mul_one _
+
+/-- **Equality case.**  The cosine bound is tight iff `cos (θ i) = 1` for every
+`i` carrying positive weight `a i > 0`. -/
+theorem sum_mul_cos_eq_sum_iff
+    {ι : Type*} (s : Finset ι) (a θ : ι → ℝ) (ha : ∀ i ∈ s, 0 ≤ a i) :
+    s.sum (fun i => a i * Real.cos (θ i)) = s.sum a ↔
+      ∀ i ∈ s, 0 < a i → Real.cos (θ i) = 1 := by
+  have hle : ∀ i ∈ s, a i * Real.cos (θ i) ≤ a i := by
+    intro i hi
+    calc a i * Real.cos (θ i)
+        ≤ a i * 1 := mul_le_mul_of_nonneg_left (Real.cos_le_one (θ i)) (ha i hi)
+      _ = a i := mul_one _
+  rw [Finset.sum_eq_sum_iff_of_le hle]
+  constructor
+  · intro h i hi hpos
+    have hi_eq : a i * Real.cos (θ i) = a i * 1 := by rw [mul_one]; exact h i hi
+    exact mul_left_cancel₀ (ne_of_gt hpos) hi_eq
+  · intro h i hi
+    rcases eq_or_lt_of_le (ha i hi) with hzero | hpos
+    · rw [← hzero]; ring
+    · rw [h i hi hpos, mul_one]
 
 /-! ### Context — CKRV citation
 
