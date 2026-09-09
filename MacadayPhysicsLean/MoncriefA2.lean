@@ -1,9 +1,9 @@
 /-
 Moncrief letter (Paper M) — Theorem A.2 insurance formalisation.
 
-**Private / not staged.**  The letter carries no Lean citations (owner decision);
-this file is a machine check of the headline algebra, available if a referee
-challenges it or a future revision wants to cite it.
+A machine check of the headline algebra of Theorem A.2, public since the Paper M
+staging of July 2026 (tag v1.0).  The Theorem A.4 (fixed-area slice) extension
+lives in `MoncriefA4`, which imports this file.
 
 Contents (spec Part 3):
 * 3a(i)  `family_flat` — flatness + torsion-free of the four-parameter family,
