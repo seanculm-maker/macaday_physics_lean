@@ -27,6 +27,7 @@ import MacadayPhysicsLean.Z3Symmetry
 import MacadayPhysicsLean.HolonomyRigidity
 import MacadayPhysicsLean.MoncriefA2
 import MacadayPhysicsLean.MoncriefA4
+import MacadayPhysicsLean.MoncriefA5
 import MacadayPhysicsLean.GenusTower
 import MacadayPhysicsLean.StokesExactForm
 import MacadayPhysicsLean.HarmonicConstant
