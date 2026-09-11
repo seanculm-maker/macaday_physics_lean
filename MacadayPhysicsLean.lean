@@ -17,6 +17,7 @@ import MacadayPhysicsLean.DensityOp
 import MacadayPhysicsLean.OrthonormalBridge
 import MacadayPhysicsLean.JointDiagonalization
 import MacadayPhysicsLean.VCTCorollary
+import MacadayPhysicsLean.VCTScalarity
 import MacadayPhysicsLean.BlockDepolarization
 import MacadayPhysicsLean.EigenprojectorFamily
 import MacadayPhysicsLean.SIT
